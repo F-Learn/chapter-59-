@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hearing & Balance Disorders – Chapter 59 Exam</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(145deg, #7a9eb3, #aecfd9);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            background: linear-gradient(145deg, #5f8ba0, #8ebecf);
+            color: white;
+            padding: 20px 30px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 85px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 4px solid #3f6072;
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+        
+        .header h1 {
+            font-size: 1.6rem;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        
+        .counter {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            min-width: 100px;
+            text-align: center;
+            white-space: nowrap;
+            margin-left: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #d3e6f0;
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #8ebecf, #5f8ba0);
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 30px;
+            background: #e6f2f7;
+        }
+        
+        .question-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border: 3px solid #c2dde9;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .question-header {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .question-number {
+            background: linear-gradient(145deg, #8ebecf, #5f8ba0);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(95,139,160,0.4);
+        }
+        
+        .question-text {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            color: #3f6072;
+            flex-grow: 1;
+            font-weight: 600;
+            padding-right: 15px;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .option {
+            padding: 20px;
+            border: 3px solid #c2dde9;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.15rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .option:hover {
+            background: #daeef7;
+            border-color: #8ebecf;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(142,190,207,0.15);
+        }
+        
+        .option-letter {
+            background: linear-gradient(145deg, #8ebecf, #5f8ba0);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: 3px solid #5f8ba0;
+        }
+        
+        .option.correct {
+            background: linear-gradient(145deg, #66bb6a, #43a047);
+            border-color: #43a047;
+            color: white;
+        }
+        
+        .option.correct .option-letter {
+            background: #43a047;
+            color: white;
+            border-color: #388e3c;
+        }
+        
+        .option.incorrect {
+            background: linear-gradient(145deg, #ef5350, #e53935);
+            border-color: #e53935;
+            color: white;
+        }
+        
+        .option.incorrect .option-letter {
+            background: #e53935;
+            color: white;
+            border-color: #d32f2f;
+        }
+        
+        .feedback-area {
+            flex-shrink: 0;
+        }
+        
+        .feedback {
+            padding: 25px;
+            border-radius: 15px;
+            display: none;
+            align-items: center;
+            gap: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            animation: slideIn 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .feedback.correct {
+            background: linear-gradient(145deg, #c8e6c9, #a5d6a7);
+            border: 3px solid #43a047;
+            color: #1b5e20;
+            display: flex;
+        }
+        
+        .feedback.incorrect {
+            background: linear-gradient(145deg, #ffcdd2, #ef9a9a);
+            border: 3px solid #e53935;
+            color: #b71c1c;
+            display: flex;
+        }
+        
+        .feedback-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        
+        .rationale {
+            background: linear-gradient(145deg, #dcf0f9, #c5e4f2);
+            border: 3px solid #7a9eb3;
+            border-radius: 15px;
+            padding: 25px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .rationale.show {
+            display: block;
+        }
+        
+        .rationale h4 {
+            color: #5f8ba0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+        }
+        
+        .rationale p {
+            color: #3f6072;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: #c2dde9;
+            border-top: 3px solid #a6cbdd;
+            flex-shrink: 0;
+            height: 80px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(145deg, #8ebecf, #5f8ba0);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(95,139,160,0.4);
+            background: linear-gradient(145deg, #5f8ba0, #3f6072);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(145deg, #90a4ae, #607d8b);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(96,125,139,0.4);
+            background: linear-gradient(145deg, #607d8b, #455a64);
+        }
+        
+        .btn-cancel {
+            background: linear-gradient(145deg, #ef5350, #e53935);
+            color: white;
+            display: none;
+        }
+        
+        .btn-cancel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(229,57,53,0.4);
+            background: linear-gradient(145deg, #e53935, #c62828);
+        }
+        
+        .btn-cancel.show {
+            display: flex;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                height: 75px;
+                padding: 15px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                padding: 15px;
+                font-size: 1.05rem;
+                gap: 15px;
+            }
+            
+            .option-letter {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .question-area {
+                padding: 20px;
+            }
+            
+            .navigation {
+                padding: 15px 20px;
+                height: 70px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .nav-buttons {
+                gap: 10px;
+            }
+        }
+        
+        @media (max-height: 700px) {
+            .header {
+                height: 70px;
+                padding: 15px 20px;
+            }
+            
+            .question-area {
+                padding: 20px;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="header-content">
+            <h1>👂 Hearing & Balance Disorders (Chapter 59)</h1>
+            <div class="subtitle">40 NCLEX-style questions with rationales</div>
+        </div>
+        <div class="counter" id="counter">1/40</div>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <div class="main-content">
+        <div class="question-area">
+            <div class="question-header">
+                <div class="question-number" id="questionNumber">1</div>
+                <div class="question-text" id="question"></div>
+            </div>
+            
+            <div class="options-container" id="options"></div>
+        </div>
+        
+        <div class="feedback-area">
+            <div class="feedback" id="feedback">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div id="feedbackText"></div>
+            </div>
+            <div class="rationale" id="rationale">
+                <h4>📘 RATIONALE:</h4>
+                <p id="rationaleText"></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="navigation">
+        <button class="btn btn-secondary" id="prevBtn" onclick="previousCard()">
+            ⬅️ Previous
+        </button>
+        <div class="nav-buttons">
+            <button class="btn btn-cancel" id="cancelBtn" onclick="cancelSelection()">
+                ❌ Cancel
+            </button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextCard()">
+                Next ➡️
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Chapter 59: Assessment and Management of Patients with Hearing and Balance Disorders – 40 questions (exact from document)
+    const questions = [
+        {
+            id: 1,
+            question: "1. The clinic nurse is assessing a child who has been brought to the clinic with signs and symptoms that are suggestive of otitis externa. What assessment finding is characteristic of this diagnosis?",
+            options: [
+                "A. Tophi on the pinna and ear lobe",
+                "B. Dark yellow cerumen in the external auditory canal",
+                "C. Pain on manipulation of the auricle",
+                "D. Air bubbles visible in the middle ear"
+            ],
+            correct: 2, // C
+            rationale: "Pain when the nurse pulls gently on the auricle in preparation for an otoscopic examination of the ear canal is a characteristic finding in clients with otitis externa. Tophi are deposits of generally painless uric acid crystals; they are a common physical assessment finding in clients diagnosed with gout. Cerumen is a normal finding during assessment of the ear canal. Its presence does not necessarily indicate that inflammation is present. Air bubbles in the middle ear may be visualized with the otoscope; however, these do not indicate a problem involving the ear canal. (PTS:1 REF:p.1938)"
+        },
+        {
+            id: 2,
+            question: "2. While reviewing the health history of an older adult experiencing hearing loss the nurse notes the client has had no trauma or loss of balance. What aspect of this client's health history is most likely to be linked to the client's hearing deficit?",
+            options: [
+                "A. Recent completion of radiation therapy for treatment of thyroid cancer",
+                "B. Routine use of quinine for management of leg cramps",
+                "C. Allergy to hair coloring and hair spray",
+                "D. Previous perforation of the eardrum"
+            ],
+            correct: 1, // B
+            rationale: "Long-term, regular use of quinine for management of leg cramps is associated with loss of hearing acuity. Radiation therapy for cancer should not affect hearing; however, hearing can be significantly compromised by chemotherapy. Allergy to hair products may be associated with otitis externa; however, it is not linked to hearing loss. An ear drum that perforates spontaneously due to the sudden drop in altitude associated with a high dive usually heals well and is not likely to become infected. Recurrent otitis media with perforation can affect hearing as a result of chronic inflammation of the ossicles in the middle ear. (PTS:1 REF:p.1957)"
+        },
+        {
+            id: 3,
+            question: "3. A nurse is planning preoperative teaching for a client with hearing loss due to otosclerosis. The client is scheduled for a stapedectomy with insertion of a prosthesis. What information is most crucial to include in the client's preoperative teaching?",
+            options: [
+                "A. The procedure is an effective, time-tested treatment for sensory hearing loss.",
+                "B. The client is likely to experience resolution of conductive hearing loss after the procedure.",
+                "C. Several months of postprocedure rehabilitation will be needed to maximize benefits.",
+                "D. The procedure is experimental, but early indications suggest great therapeutic benefits."
+            ],
+            correct: 1, // B
+            rationale: "Stapedectomy is a very successful time-tested procedure, resulting in the restoration of conductive hearing loss. Lengthy rehabilitation is not normally required. (PTS:1 REF:p.1953)"
+        },
+        {
+            id: 4,
+            question: "4. The nurse is providing discharge education for a client with a new diagnosis of Ménière disease. What food should the client be instructed to limit or avoid?",
+            options: [
+                "A. Sweet pickles",
+                "B. Frozen yogurt",
+                "C. Shellfish",
+                "D. Red meat"
+            ],
+            correct: 0, // A
+            rationale: "The client with Ménière disease should avoid foods high in salt and/or sugar; sweet pickles are high in both. Milk products are not contraindicated. Any type of meat, fish, or poultry is permitted, with the exception of canned or pickled varieties. In general, the client with Ménière disease should avoid or limit canned and processed foods. (PTS:1 REF:p.1954)"
+        },
+        {
+            id: 5,
+            question: "5. Following a motorcycle accident, an adolescent client is brought to the ED. What physical assessment findings related to the ear should be reported by the nurse immediately?",
+            options: [
+                "A. The malleus can be visualized during otoscopic examination.",
+                "B. The tympanic membrane is pearly gray.",
+                "C. Tenderness is reported by the client when the mastoid area is palpated.",
+                "D. Clear, watery fluid is draining from the client's ear."
+            ],
+            correct: 3, // D
+            rationale: "For the client experiencing acute head trauma, immediately report the presence of clear, watery drainage from the ear. The fluid is likely to be cerebrospinal fluid associated with skull fracture. The ability to visualize the malleus is a normal physical assessment finding. The tympanic membrane is normally pearly gray in color. Tenderness of the mastoid area usually indicates inflammation. This should be reported, but is not a finding indicating urgent intervention. (PTS:1 REF:p.1948)"
+        },
+        {
+            id: 6,
+            question: "6. A client has been diagnosed with hearing loss related to damage of the cochlea. What term is used to describe this condition?",
+            options: [
+                "A. Exostoses",
+                "B. Otalgia",
+                "C. Sensorineural hearing loss",
+                "D. Presbycusis"
+            ],
+            correct: 2, // C
+            rationale: "Sensorineural hearing loss is loss of hearing related to damage of the end organ for hearing (cochlea) or cranial nerve VIII. Exostoses refer to small, hard, bony protrusions in the lower posterior bony portion of the ear canal. Otalgia refers to a sensation of fullness or pain in the ear. Presbycusis is the term used to refer to the progressive hearing loss associated with aging. Both middle and inner ear age-related changes result in hearing loss. (PTS:1 REF:p.1944)"
+        },
+        {
+            id: 7,
+            question: "7. A group of high school students is attending a concert, which will be at a volume of 80 to 90 dB. What is a health consequence of this sound level?",
+            options: [
+                "A. Hearing will not be affected by a decibel level in this range.",
+                "B. Hearing loss may occur with a decibel level in this range.",
+                "C. Sounds in this decibel level are not perceived to be harsh to the ear.",
+                "D. Ear plugs will have no effect on these decibel levels."
+            ],
+            correct: 1, // B
+            rationale: "Sound louder than 80 dB is perceived by the human ear to be harsh and can be damaging to the inner ear. Ear protection or plugs do help to minimize the effects of high decibel levels. (PTS:1 REF:p.1942)"
+        },
+        {
+            id: 8,
+            question: "8. A client with otosclerosis has significant hearing loss. What should the nurse do to best facilitate communication with the client?",
+            options: [
+                "A. Sit or stand in front of the client when speaking.",
+                "B. Use exaggerated lip and mouth movements when talking.",
+                "C. Stand in front of a light or window when speaking.",
+                "D. Say the client's name loudly before starting to talk."
+            ],
+            correct: 0, // A
+            rationale: "Standing directly in front of a hearing-impaired client allows him or her to lip-read and see facial expressions that offer clues to what is being said. Using exaggerated lip and mouth movements can make lip-reading more difficult by distorting words. Backlighting can create glare, making it difficult for the client to lip-read. To get the attention of a hearing-impaired client, gently touch the client's shoulder or stand in front of the client. (PTS:1 REF:p.1946)"
+        },
+        {
+            id: 9,
+            question: "9. The nurse in the ED is caring for a child brought in by the parents who state that the child will not stop crying and pulling at the child's ear. Based on information collected by the nurse, which of the following statements applies to a diagnosis of external otitis?",
+            options: [
+                "A. External otitis is characterized by aural tenderness.",
+                "B. External otitis is usually accompanied by a high fever.",
+                "C. External otitis is usually related to an upper respiratory infection.",
+                "D. External otitis can be prevented by using cotton-tipped applicators to clean the ear."
+            ],
+            correct: 0, // A
+            rationale: "Clients with otitis externa usually exhibit pain, discharge from the external auditory canal, and aural tenderness. Fever and accompanying upper respiratory infection occur more commonly in conjunction with otitis media (infection of the middle ear). Cotton-tipped applicators can actually cause external otitis so their use should be avoided. (PTS:1 REF:p.1948)"
+        },
+        {
+            id: 10,
+            question: "10. A client diagnosed with arthritis has been taking aspirin and now reports experiencing tinnitus and hearing loss. What should the nurse teach this client?",
+            options: [
+                "A. The hearing loss will likely resolve with time after the drug is discontinued.",
+                "B. The client's hearing loss and tinnitus are irreversible at this point.",
+                "C. The client's tinnitus is likely multifactorial, and not directly related to aspirin use.",
+                "D. The client's tinnitus will abate as tolerance to aspirin develops."
+            ],
+            correct: 0, // A
+            rationale: "Tinnitus and hearing loss are signs of ototoxicity, which is associated with aspirin use. In most cases, this will resolve upon discontinuing the aspirin. Many other drugs cause irreversible ototoxicity. (PTS:1 REF:p.1957)"
+        },
+        {
+            id: 11,
+            question: "11. A client is postoperative day 6 following tympanoplasty and mastoidectomy. The client has phoned the surgical unit and states experiencing occasional sharp, shooting pains in the affected ear. How should the nurse best interpret this client's report?",
+            options: [
+                "A. These pains are an expected finding during the first few weeks of recovery.",
+                "B. The client's report is suggestive of a postoperative infection.",
+                "C. The client may have experienced a spontaneous rupture of the tympanic membrane.",
+                "D. The client's surgery may have been unsuccessful."
+            ],
+            correct: 0, // A
+            rationale: "For 2 to 3 weeks after surgery, the client may experience sharp, shooting pains intermittently as the eustachian tube opens and allows air to enter the middle ear. Constant, throbbing pain accompanied by fever may indicate infection and should be reported to the primary care provider. The client's pain does not suggest tympanic perforation or unsuccessful surgery. (PTS:1 REF:p.1951)"
+        },
+        {
+            id: 12,
+            question: "12. The nurse is discussing the results of a client's diagnostic testing with the nurse practitioner. What Weber test result would indicate the presence of a sensorineural loss?",
+            options: [
+                "A. The sound is heard better in the ear in which hearing is better.",
+                "B. The sound is heard equally in both ears.",
+                "C. The sound is heard better in the ear in which hearing is poorer.",
+                "D. The sound is heard longer in the ear in which hearing is better."
+            ],
+            correct: 0, // A
+            rationale: "A client with sensorineural hearing loss hears the sound better in the ear in which hearing is better. The Weber test assesses bone conduction of sound and is used for assessing unilateral hearing loss. A tuning fork is used. A client with normal hearing hears the sound equally in both ears or describes the sound as centered in the middle of the head. A client whose hearing loss is conductive hears the sound better in the affected ear. (PTS:1 REF:p.1941)"
+        },
+        {
+            id: 13,
+            question: "13. The advanced practice nurse is attempting to examine the client's ear with an otoscope. Because of impacted cerumen, the tympanic membrane cannot be visualized. The nurse irrigates the client's ear with a solution of hydrogen peroxide and water to remove the impacted cerumen. What nursing intervention is most important to minimize nausea and vertigo during the procedure?",
+            options: [
+                "A. Maintain the irrigation fluid at a warm temperature.",
+                "B. Instill short, sharp bursts of fluid into the ear canal.",
+                "C. Follow the procedure with insertion of a cerumen curette to extract missed ear wax.",
+                "D. Have the client stand during the procedure."
+            ],
+            correct: 0, // A
+            rationale: "Warm water (never cold or hot) and gentle, not forceful, irrigation should be used to remove cerumen. Too forceful irrigation can cause perforation of the tympanic membrane, and ice water causes vomiting. Cerumen curettes should not be routinely used by the nurse. Special training is required to use a curette safely. It is unnecessary to have the client stand during the procedure. (PTS:1 REF:p.1946)"
+        },
+        {
+            id: 14,
+            question: "14. A client is scheduled to have an electronystagmography as part of a diagnostic workup for Ménière disease. What question is most important for the nurse to ask the client in preparation for this test?",
+            options: [
+                "A. Have you ever experienced claustrophobia or feelings of anxiety while in enclosed spaces?",
+                "B. Do you currently take any tranquilizers or stimulants on a regular basis?",
+                "C. Do you have a history of falls or problems with loss of balance?",
+                "D. Do you have a history of either high or low blood pressure?"
+            ],
+            correct: 1, // B
+            rationale: "Electronystagmography measures changes in electrical potentials created by eye movements during induced nystagmus. Medications such as tranquilizers, stimulants, or antivertigo agents are withheld for 5 days before the test. Claustrophobia is not a significant concern associated with this test; rather, it is most often a concern for clients undergoing magnetic resonance imaging (MRI). Balance is impaired by Ménière disease; therefore, a client history of balance problems is important, but is not relevant to test preparation. Hypertension or hypotension, while important health problems, should not be affected by this test. (PTS:1 REF:p.1943)"
+        },
+        {
+            id: 15,
+            question: "15. The nurse is planning the care of a client who is adapting to the use of a hearing aid for the first time. What is the most significant challenge this client is likely to experience?",
+            options: [
+                "A. Regulating the tone and volume",
+                "B. Learning to cope with amplification of background noise",
+                "C. Constant irritation of the external auditory canal",
+                "D. Challenges in keeping the hearing aid clean while minimizing exposure to moisture"
+            ],
+            correct: 1, // B
+            rationale: "Each of the answers represents a common problem experienced by clients using a hearing aid for the first time. However, amplification of background noise is a difficult problem to manage and is the major reason why clients stop using their hearing aid. All clients learning to use a hearing aid require support and coaching by the nurse and other members of the health care team. Clients should be encouraged to discuss their adaptation to the hearing aid with their audiologist. (PTS:1 REF:p.1958)"
+        },
+        {
+            id: 16,
+            question: "16. A client with mastoiditis is admitted to the postsurgical unit after undergoing a radical mastoidectomy. The nurse should identify what priority of postoperative care?",
+            options: [
+                "A. Assessing for mouth droop and decreased lateral eye gaze",
+                "B. Assessing for increased middle ear pressure and perforated ear drum",
+                "C. Assessing for gradual onset of conductive hearing loss and nystagmus",
+                "D. Assessing for scar tissue and cerumen obstructing the auditory canal"
+            ],
+            correct: 0, // A
+            rationale: "The facial nerve runs through the middle ear and the mastoid; therefore, there is risk of injuring this nerve during a mastoidectomy. When injury occurs, the client may display mouth droop and decreased lateral gaze on the operative side. Scar tissue is a long-term complication of tympanoplasty and therefore would not be evident during the immediate postoperative period. Tympanic perforation is not a common complication of this surgery. (PTS:1 REF:p.1951)"
+        },
+        {
+            id: 17,
+            question: "17. The nurse is planning the care of a client with a diagnosis of vertigo. What nursing diagnosis risk should the nurse prioritize in this client's care?",
+            options: [
+                "A. Risk for disturbed sensory perception",
+                "B. Risk for unilateral neglect",
+                "C. Risk for falls",
+                "D. Risk for ineffective health maintenance"
+            ],
+            correct: 2, // C
+            rationale: "Vertigo is defined as the misperception or illusion of motion, either of the person or the surroundings. A client suffering from vertigo will be at an increased risk of falls. For most clients, this is likely to exceed the client's risk for neglect, ineffective health maintenance, or disturbed sensation. (PTS:1 REF:p.1955)"
+        },
+        {
+            id: 18,
+            question: "18. A client has been diagnosed with serous otitis media for the third time in the past year. How should the nurse best interpret this client's health status?",
+            options: [
+                "A. For some clients, these recurrent infections constitute an age-related physiologic change.",
+                "B. The client would benefit from a temporary mobility restriction to facilitate healing.",
+                "C. The client needs to be assessed for nasopharyngeal cancer.",
+                "D. Blood cultures should be drawn to rule out a systemic infection."
+            ],
+            correct: 2, // C
+            rationale: "A carcinoma (e.g., nasopharyngeal cancer) obstructing the eustachian tube should be ruled out in adults with persistent unilateral serous otitis media. This phenomenon is not an age-related change and does not indicate a systemic infection. Mobility limitations are unnecessary. (PTS:1 REF:p.1949)"
+        },
+        {
+            id: 19,
+            question: "19. The nurse is providing care for a client who has benefited from a cochlear implant. The nurse should understand that this client's health history likely includes which of the following? Select all that apply.",
+            options: [
+                "A. The client was diagnosed with sensorineural hearing loss.",
+                "B. The client's hearing did not improve appreciably with the use of hearing aids.",
+                "C. The client has deficits in peripheral nervous function.",
+                "D. The client's hearing deficit is likely accompanied by a cognitive deficit.",
+                "E. The client is unable to lip-read."
+            ],
+            correct: [0,1], // A, B
+            rationale: "A cochlear implant is an auditory prosthesis used for people with profound sensorineural hearing loss bilaterally who do not benefit from conventional hearing aids. The need for a cochlear implant is not associated with deficits in peripheral nervous function, cognitive deficits, or an inability to lip-read. (PTS:1 REF:p.1961)"
+        },
+        {
+            id: 20,
+            question: "20. A client presents to the ED reporting a sudden onset of incapacitating vertigo, with nausea and vomiting and tinnitus. The client mentions to the nurse experiencing a sudden hearing loss. What would the nurse suspect the client's diagnosis will be?",
+            options: [
+                "A. Ossiculitis",
+                "B. Ménière disease",
+                "C. Ototoxicity",
+                "D. Labyrinthitis"
+            ],
+            correct: 3, // D
+            rationale: "Labyrinthitis is characterized by a sudden onset of incapacitating vertigo, usually with nausea and vomiting, various degrees of hearing loss, and possibly tinnitus. None of the other listed diagnoses are characterized by a rapid onset of symptoms. (PTS:1 REF:p.1954)"
+        },
+        {
+            id: 21,
+            question: "21. Which of the following nurse's actions carries the greatest potential to prevent hearing loss due to ototoxicity?",
+            options: [
+                "A. Ensure that clients understand the differences between sensory hearing loss and conductive hearing loss.",
+                "B. Educate clients about expected age-related changes in hearing perception.",
+                "C. Educate clients about the risks associated with prolonged exposure to environmental noise.",
+                "D. Be aware of clients' medication regimens and collaborate with other professionals accordingly."
+            ],
+            correct: 3, // D
+            rationale: "A variety of medications may have adverse effects on the cochlea, vestibular apparatus, or cranial nerve VIII. All but a few, such as aspirin and quinine, cause irreversible hearing loss. Ototoxicity is not related to age-related changes, noise exposure, or the differences between types of hearing loss. (PTS:1 REF:p.1957)"
+        },
+        {
+            id: 22,
+            question: "22. A child goes to the school nurse and reports being unable to hear the teacher. What test could the school nurse perform that would preliminarily indicate hearing loss?",
+            options: [
+                "A. Audiometry",
+                "B. Rinne test",
+                "C. Whisper test",
+                "D. Weber test"
+            ],
+            correct: 2, // C
+            rationale: "A general estimate of hearing can be made by assessing the client's ability to hear a whispered phrase or a ticking watch, testing one ear at a time. The Rinne and Weber tests distinguish sensorineural from conductive hearing loss. These tests, as well as audiometry, are not usually performed by a registered nurse in a general practice setting. (PTS:1 REF:p.1940)"
+        },
+        {
+            id: 23,
+            question: "23. A nurse is teaching preventative measures for otitis externa to a group of older adults. What action should the nurse encourage?",
+            options: [
+                "A. Rinsing the ears with normal saline after swimming",
+                "B. Avoiding loud environmental noises",
+                "C. Instilling antibiotic ointments on a regular basis",
+                "D. Avoiding the use of cotton swabs"
+            ],
+            correct: 3, // D
+            rationale: "Nurses should instruct clients not to clean the external auditory canal with cotton-tipped applicators and to avoid events that traumatize the external canal such as scratching the canal with the fingernail or other objects. Environmental noise should be avoided, but this does not address the risk for ear infection. Routine use of antibiotics is not encouraged and rinsing the ears after swimming is not recommended. (PTS:1 REF:p.1947)"
+        },
+        {
+            id: 24,
+            question: "24. The nurse is reviewing the health history of a newly admitted client and reads that the client has been previously diagnosed with exostoses. How should the nurse accommodate this fact into the client's plan of care?",
+            options: [
+                "A. The nurse should perform the Rinne and Weber tests.",
+                "B. The nurse should arrange for audiometry testing as soon as possible.",
+                "C. The nurse should collaborate with the pharmacist to assess for potential ototoxic medications.",
+                "D. No specific assessments or interventions are necessary to address exostoses."
+            ],
+            correct: 3, // D
+            rationale: "Exostoses are small, hard, bony protrusions found in the lower posterior bony portion of the ear canal; they usually occur bilaterally. They do not normally impact hearing and no treatments or nursing actions are usually necessary. (PTS:1 REF:p.1948)"
+        },
+        {
+            id: 25,
+            question: "25. The nurse is caring for a client who has undergone a mastoidectomy. In an effort to prevent postoperative infection, what intervention should the nurse implement?",
+            options: [
+                "A. Teach the client about the risks of ototoxic medications.",
+                "B. Instruct the client to protect the ear from water for several weeks.",
+                "C. Teach the client to remove cerumen safely at least once per week.",
+                "D. Instruct the client to protect the ear from temperature extremes until healing is complete."
+            ],
+            correct: 1, // B
+            rationale: "To prevent infection, the client is instructed to prevent water from entering the external auditory canal for 6 weeks. Ototoxic medications and temperature extremes do not present a risk for infection. Removal of cerumen during the healing process should be avoided due to the possibility of trauma. (PTS:1 REF:p.1950)"
+        },
+        {
+            id: 26,
+            question: "26. A client is being discharged home after mastoid surgery. What topic should the nurse address in the client's discharge education?",
+            options: [
+                "A. Expected changes in facial nerve function",
+                "B. The need for audiometry testing every 6 months following recovery",
+                "C. Safe use of analgesics and antivertiginous agents",
+                "D. Appropriate use of over-the-counter (OTC) ear drops"
+            ],
+            correct: 2, // C
+            rationale: "Clients require instruction about medication therapy, such as analgesics and antivertiginous agents (e.g., antihistamines) prescribed for balance disturbance. Over-the-counter (OTC) ear drops are not recommended and changes in facial nerve function are signs of a complication that needs to be addressed promptly. There is no need for serial audiometry testing. (PTS:1 REF:p.1951)"
+        },
+        {
+            id: 27,
+            question: "27. After mastoid surgery, an 81-year-old client has been identified as needing assistance in her home. What would be a primary focus of this client's home care?",
+            options: [
+                "A. Preparation of nutritious meals and avoidance of contraindicated foods",
+                "B. Ensuring the client receives adequate rest each day",
+                "C. Helping the client adapt to temporary hearing loss",
+                "D. Assisting the client with ambulation as needed to avoid falling"
+            ],
+            correct: 3, // D
+            rationale: "The caregiver and client are cautioned that the client may experience some vertigo and will therefore require help with ambulation to avoid falling. The client should not be expected to experience hearing loss and no foods are contraindicated. Adequate rest is needed, but this is not a primary focus of home care. (PTS:1 REF:p.1951)"
+        },
+        {
+            id: 28,
+            question: "28. A hearing-impaired client is scheduled to have an MRI. What would be important for the nurse to remember when caring for this client?",
+            options: [
+                "A. Client is likely unable to hear the nurse during test.",
+                "B. A person adept in sign language must be present during test.",
+                "C. Lip reading will be the method of communication that is necessary.",
+                "D. The nurse should interact with the client like any other client."
+            ],
+            correct: 0, // A
+            rationale: "During health care and screening procedures, the practitioner (e.g., dentist, health care provider, nurse) must be aware that clients who are deaf or hearing impaired are unable to read lips, see a signer, or read written materials in the dark rooms required during some diagnostic tests. The same situation exists if the practitioner is wearing a mask or not in sight (e.g., x-ray studies, MRI, colonoscopy). (PTS:1 REF:p.1945)"
+        },
+        {
+            id: 29,
+            question: "29. A 6-month-old infant is brought to the ED by the parents for inconsolable crying and pulling at the right ear. When assessing this infant, the advanced practice nurse is aware that the tympanic membrane should be what color in a healthy ear?",
+            options: [
+                "A. Yellowish-white",
+                "B. Pink",
+                "C. Gray",
+                "D. Bluish-white"
+            ],
+            correct: 2, // C
+            rationale: "The healthy tympanic membrane appears pearly gray and is positioned obliquely at the base of the ear canal. Any other color is suggestive of a pathologic process. (PTS:1 REF:p.1937)"
+        },
+        {
+            id: 30,
+            question: "30. A child has been experiencing recurrent episodes of acute otitis media (AOM). The nurse should anticipate that what intervention is likely to be ordered?",
+            options: [
+                "A. Ossiculoplasty",
+                "B. Insertion of a cochlear implant",
+                "C. Stapedectomy",
+                "D. Insertion of a ventilation tube"
+            ],
+            correct: 3, // D
+            rationale: "If AOM recurs and there is no contraindication, a ventilating, or pressure-equalizing, tube may be inserted. The ventilating tube, which temporarily takes the place of the eustachian tube in equalizing pressure, is retained for 6 to 18 months. Ossiculoplasty is not used to treat AOM and stapedectomy is performed to treat otosclerosis. Cochlear implants are used to treat sensorineural hearing loss. (PTS:1 REF:p.1949)"
+        },
+        {
+            id: 31,
+            question: "31. An older adult with a recent history of mixed hearing loss has been diagnosed with a cholesteatoma. What should this client be taught about this diagnosis? Select all that apply.",
+            options: [
+                "A. Cholesteatomas are benign and self-limiting, and hearing loss will resolve spontaneously.",
+                "B. Cholesteatomas are usually the result of metastasis from a distant tumor site.",
+                "C. Cholesteatomas are often the result of chronic otitis media.",
+                "D. Cholesteatomas, if left untreated, result in intractable neuropathic pain.",
+                "E. Cholesteatomas usually must be removed surgically."
+            ],
+            correct: [2,4], // C, E
+            rationale: "Cholesteatoma is a tumor of the external layer of the eardrum into the middle ear, often resulting from chronic otitis media. They usually do not cause pain; however, if treatment or surgery is delayed, they may burst or destroy the mastoid bone. They are not normally the result of metastasis and are not self-limiting. (PTS:1 REF:p.1949)"
+        },
+        {
+            id: 32,
+            question: "32. Upon examination via otoscopy, a red blemish behind the tympanic membrane is suggestive of what diagnosis?",
+            options: [
+                "A. Acoustic tumor",
+                "B. Cholesteatoma",
+                "C. Facial nerve neuroma",
+                "D. Glomus tympanicum"
+            ],
+            correct: 3, // D
+            rationale: "In the case of glomus tympanicum, a red blemish on or behind the tympanic membrane is seen on otoscopy. This assessment finding is not associated with an acoustic tumor, facial nerve neuroma, or cholesteatoma. (PTS:1 REF:p.1953)"
+        },
+        {
+            id: 33,
+            question: "33. The nurse is discharging a client home after mastoid surgery. What should the nurse include in discharge teaching?",
+            options: [
+                "A. 'Try to induce a sneeze every 4 hours to equalize pressure.'",
+                "B. 'Be sure to exercise to reduce fatigue.'",
+                "C. 'Avoid sleeping in a side-lying position.'",
+                "D. 'Don't blow your nose for 2 to 3 weeks.'"
+            ],
+            correct: 3, // D
+            rationale: "The client is instructed to avoid heavy lifting, straining, exertion, and nose blowing for 2 to 3 weeks after surgery to prevent dislodging the tympanic membrane graft or ossicular prosthesis. Side-lying is not contraindicated; sneezing could cause trauma. (PTS:1 REF:p.1951)"
+        },
+        {
+            id: 34,
+            question: "34. An advanced practice nurse has performed a Rinne test on a new client. During the test, the client reports that air-conducted sound is louder than bone-conducted sound. How should the nurse best interpret this assessment finding?",
+            options: [
+                "A. The client's hearing is likely normal.",
+                "B. The client is at risk for tinnitus.",
+                "C. The client likely has otosclerosis.",
+                "D. The client likely has sensorineural hearing loss."
+            ],
+            correct: 0, // A
+            rationale: "The Rinne test is useful for distinguishing between conductive and sensorineural hearing loss. A person with normal hearing reports that air-conducted sound is louder than bone-conducted sound. (PTS:1 REF:p.1941)"
+        },
+        {
+            id: 35,
+            question: "35. A nurse is preparing a presentation for a group of elementary school parents about ways to promote the health of the ears and hearing in their children. When describing the structure and function of the ears, which structure would the nurse most likely include as part of the middle ear? Select all that apply.",
+            options: [
+                "A. pinna",
+                "B. tympanic membrane",
+                "C. oval window",
+                "D. cochlea",
+                "E. organ of Corti"
+            ],
+            correct: [1,2], // B, C
+            rationale: "The middle ear contains the tympanic membrane and oval window. The pinna is part of the external ear. The cochlea and organ of Corti are part of the inner ear. (PTS:1 REF:p.1937)"
+        },
+        {
+            id: 36,
+            question: "36. A older adult client comes to the clinic for an evaluation. The client says, 'It just doesn't seem like I hear as well as I used to hear.' As part of the assessment, the nurse evaluates the client's gross auditory acuity. Which test would the nurse most likely conduct?",
+            options: [
+                "A. whisper test",
+                "B. Weber test",
+                "C. Rinne test",
+                "D. audiometry"
+            ],
+            correct: 0, // A
+            rationale: "A general estimate of hearing can be made by assessing the client's ability to hear a whispered phrase or a ticking watch, testing one ear at a time. The Weber and Rinne tests may be used to distinguish conductive loss from sensorineural loss when hearing is impaired. Audiometry is an important diagnostic test to evaluate hearing and provides specific information about a person's hearing status. (PTS:1 REF:p.1940)"
+        },
+        {
+            id: 37,
+            question: "37. A client is scheduled for audiometry to evaluate hearing. When teaching the client about this test, which characteristic would the nurse include as being evaluated? Select all that apply.",
+            options: [
+                "A. pitch",
+                "B. frequency",
+                "C. intensity",
+                "D. compliance",
+                "E. postural control capabilities"
+            ],
+            correct: [0,1,2], // A, B, C
+            rationale: "When evaluating hearing, three characteristics are important: frequency, pitch, and intensity. Frequency refers to the number of sound waves emanating from a source per second, measured as cycles per second, or Hertz (Hz). Pitch is the term used to describe frequency; a tone with 100 Hz is considered of low pitch, and a tone of 10,000 Hz is considered of high pitch. The unit for measuring loudness (intensity of sound) is the decibel (dB), the pressure exerted by sound. Compliance refers to the tympanic membrane function and is measured by a tympanogram. A platform post-urography is used to measure postural control capabilities. (PTS:1 REF:p.1941)"
+        },
+        {
+            id: 38,
+            question: "38. A nurse suspects that an older adult client may be experiencing hearing loss. Which finding would support the nurse's suspicion? Select all that apply.",
+            options: [
+                "A. Dropping of word endings",
+                "B. Disinterest in conversations",
+                "C. Social withdrawal",
+                "D. Domination of conversations",
+                "E. Quick decision making"
+            ],
+            correct: [0,1,2,3], // A, B, C, D
+            rationale: "The person who slurs words or drops word endings, or produces flat-sounding speech, may not be hearing correctly. The ears guide the voice, both in loudness and in pronunciation. It is easy for the person who cannot hear what others say to become depressed and disinterested in life in general. Not being able to hear causes a person who is hearing-impaired to withdraw from situations that might prove embarrassing. Lack of self-confidence and fear of mistakes create a feeling of insecurity in many people who are hearing-impaired. No one likes to say the wrong thing or do anything that might appear foolish. Loss of self-confidence makes it increasingly difficult for a person who is hearing-impaired to make decisions. Many people who are hearing-impaired tend to dominate the conversation, knowing that as long as it is centered on them and they can control it, they are not so likely to be embarrassed by some mistake. (PTS:1 REF:p.1944)"
+        },
+        {
+            id: 39,
+            question: "39. A client with hearing loss is scheduled to undergo aural rehabilitation. When describing this therapy, the nurse would include which information as the primary purpose?",
+            options: [
+                "A. Increase hearing ability.",
+                "B. Maximize ability to communicate.",
+                "C. Facilitate use of a hearing aid.",
+                "D. Limit extraneous noise."
+            ],
+            correct: 1, // B
+            rationale: "If hearing loss is permanent or cannot be treated by medical or surgical means, or if the client elects not to undergo surgery, aural rehabilitation may be beneficial. The purpose of aural rehabilitation is to maximize the communication skills of the person with hearing impairment. Aural rehabilitation includes auditory training, speech reading, speech training, and the use of hearing aids and hearing guide dogs. (PTS:1 REF:p.1958)"
+        },
+        {
+            id: 40,
+            question: "40. A client develops a perforated eardrum. When teaching the client about this condition, the nurse would identify which condition as a most likely cause?",
+            options: [
+                "A. infection",
+                "B. otosclerosis",
+                "C. Meniere disease",
+                "D. cholesteatoma"
+            ],
+            correct: 0, // A
+            rationale: "Perforation of the tympanic membrane is usually caused by infection or trauma. Sources of trauma include skull fracture, explosive injury, or a severe blow to the ear. Less frequently, perforation is caused by foreign objects (e.g., cotton-tipped applicators, bobby pins, keys) that have been pushed too far into the external auditory canal. A perforated eardrum is not associated with Meniere's disease, otosclerosis, or cholesteatoma. (PTS:1 REF:p.1948)"
+        }
+    ];
+
+    let currentQuestion = 0;
+    let selectedOption = null;
+    let answers = Array(questions.length).fill(null);
+
+    function loadQuestion() {
+        const q = questions[currentQuestion];
+        if (!q) return;
+
+        const progress = ((currentQuestion + 1) / questions.length) * 100;
+        document.getElementById('progressBar').style.width = `${progress}%`;
+        document.getElementById('counter').textContent = `${currentQuestion + 1}/${questions.length}`;
+        document.getElementById('questionNumber').textContent = q.id;
+
+        document.getElementById('question').innerHTML = q.question;
+        loadOptions(q);
+
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('rationale').classList.remove('show');
+        document.getElementById('cancelBtn').classList.remove('show');
+
+        document.getElementById('prevBtn').disabled = currentQuestion === 0;
+        const stored = answers[q.id - 1];
+        document.getElementById('nextBtn').disabled = stored === null || stored === undefined;
+        document.getElementById('nextBtn').textContent = currentQuestion >= questions.length - 1 ? 'Finish ➡️' : 'Next ➡️';
+    }
+
+    function loadOptions(q) {
+        const container = document.getElementById('options');
+        container.innerHTML = '';
+        q.options.forEach((opt, idx) => {
+            const div = document.createElement('div');
+            div.className = 'option';
+            div.innerHTML = `<div class="option-letter">${String.fromCharCode(65 + idx)}</div><div>${opt}</div>`;
+            div.onclick = () => selectOption(idx);
+            container.appendChild(div);
+        });
+
+        const saved = answers[q.id - 1];
+        if (saved !== null && saved !== undefined) {
+            selectOption(saved, true);
+        }
+    }
+
+    function selectOption(index, fromMemory = false) {
+        const q = questions[currentQuestion];
+        if (!fromMemory && selectedOption !== null) return;
+
+        if (!fromMemory) {
+            selectedOption = index;
+            answers[q.id - 1] = index;
+        }
+
+        highlightSelected(index, q);
+        showFeedback(index, q);
+        document.getElementById('nextBtn').disabled = false;
+        document.getElementById('cancelBtn').classList.add('show');
+    }
+
+    function highlightSelected(index, q) {
+        const opts = document.querySelectorAll('.option');
+        opts.forEach((opt, i) => opt.classList.remove('correct', 'incorrect'));
+
+        const correctIndices = Array.isArray(q.correct) ? q.correct : [q.correct];
+        if (Array.isArray(q.correct)) {
+            correctIndices.forEach(ci => opts[ci]?.classList.add('correct'));
+            if (!correctIndices.includes(index)) {
+                opts[index]?.classList.add('incorrect');
+            }
+        } else {
+            if (index === q.correct) {
+                opts[index].classList.add('correct');
+            } else {
+                opts[index].classList.add('incorrect');
+                opts[q.correct].classList.add('correct');
+            }
+        }
+    }
+
+    function showFeedback(index, q) {
+        const fb = document.getElementById('feedback');
+        const icon = document.getElementById('feedbackIcon');
+        const text = document.getElementById('feedbackText');
+        const rationaleDiv = document.getElementById('rationale');
+        const rationaleP = document.getElementById('rationaleText');
+
+        const correctIndices = Array.isArray(q.correct) ? q.correct : [q.correct];
+        const isCorrect = correctIndices.includes(index);
+
+        if (isCorrect) {
+            fb.className = 'feedback correct';
+            icon.textContent = '✅';
+            text.textContent = 'CORRECT! Well done.';
+        } else {
+            fb.className = 'feedback incorrect';
+            icon.textContent = '❌';
+            const letters = correctIndices.map(c => String.fromCharCode(65 + c)).join(', ');
+            text.textContent = `INCORRECT. The correct answer(s): ${letters}`;
+        }
+
+        fb.style.display = 'flex';
+        rationaleP.innerHTML = q.rationale;
+        rationaleDiv.classList.add('show');
+    }
+
+    function cancelSelection() {
+        const q = questions[currentQuestion];
+        selectedOption = null;
+        answers[q.id - 1] = null;
+        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('correct', 'incorrect'));
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('rationale').classList.remove('show');
+        document.getElementById('cancelBtn').classList.remove('show');
+        document.getElementById('nextBtn').disabled = true;
+    }
+
+    function nextCard() {
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            selectedOption = null;
+            loadQuestion();
+        } else {
+            currentQuestion = 0;
+            loadQuestion();
+        }
+    }
+
+    function previousCard() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            const q = questions[currentQuestion];
+            selectedOption = answers[q.id - 1];
+            loadQuestion();
+        }
+    }
+
+    // keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (e.key >= '1' && e.key <= '4') selectOption(parseInt(e.key)-1);
+        else if (e.key >= 'a' && e.key <= 'd') selectOption(e.key.charCodeAt(0)-97);
+        else if (e.key >= 'A' && e.key <= 'D') selectOption(e.key.charCodeAt(0)-65);
+        else if (e.key === 'ArrowLeft' && !document.getElementById('prevBtn').disabled) previousCard();
+        else if (e.key === 'ArrowRight' && !document.getElementById('nextBtn').disabled) nextCard();
+        else if (e.key === 'Escape' && document.getElementById('cancelBtn').classList.contains('show')) cancelSelection();
+    });
+
+    loadQuestion();
+</script>
+</body>
+</html>
